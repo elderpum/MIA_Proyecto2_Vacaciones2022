@@ -1,0 +1,14 @@
+{
+  "usuarios": [
+    {
+      "id": 2,
+      "name": "Prueba1",
+      "username": "prueba1user",
+      "fotoPerfil": "prueba1.jpg",
+      "correo": "prueba1@gmail.com",
+      "password": "1234",
+      "ConfirmPass": "1234",
+      "tipoUser": "recepcionista"
+    }
+  ]
+}
