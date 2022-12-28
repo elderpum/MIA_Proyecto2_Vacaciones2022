@@ -14,7 +14,7 @@
       "id": "3",
       "name": "prueba1",
       "username": "prueba1user",
-      "profilePhoto": "prueba1user/profile.jpg",
+      "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/prueba1user/profile.jpg",
       "email": "prueba1@gmail.com",
       "password": "777",
       "confirmPass": "777",
