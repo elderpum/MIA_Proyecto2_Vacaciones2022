@@ -4,11 +4,21 @@ const path = require('path')
 const { response, request } = require('express')
 const {uploadFile} = require('../helpers/awss3')
 
+const { CognitoHandler } = require('../models/Cognito/CognitoHandler');
+
+
+// Cognito Configuration
+const cognitoData = {
+    userPoolId: process.env.COGNITO_USER_POOL_ID,
+    clientId: process.env.COGNITO_CLIENT_ID
+}
+
+const cognitoHandler = new CognitoHandler();
+const cognitoUserPool = cognitoHandler.getCognitoUserPool(cognitoData.userPoolId, cognitoData.clientId);
+
 const createUser = async (req = request, res = response) => {
     const file = fs.readFileSync(path.resolve(__dirname, "../database/users.json"), 'utf-8');
     let jsonUsers = JSON.parse(file)
-    const puerto = process.env.PORT
-    console.log(puerto)
     
     // Get text params in request body
     const {id, name, username, email, password, confirmPass, tipoUser} = req.body
@@ -30,7 +40,9 @@ const createUser = async (req = request, res = response) => {
 
     // We need to open users.json and insert data in
     try {
+        // At the end, if everything is ok we register this user into cognito user pool
         const {url: urlPerfil, nombre} = await uploadFile(nombreArchivo, picture.data)
+        await cognitoUserPool.SignUp(username, password, name, email, urlPerfil)
         var newUser = {
             id: id,
             name: name,
