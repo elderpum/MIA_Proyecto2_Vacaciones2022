@@ -1,1 +1,24 @@
-{"users":[{"id":"5","name":"erick villatoro","username":"villa01","profilePhoto":"https://appweb-201700761-p2.s3.amazonaws.com/villa01/profile.jpg","email":"elderpum99@gmail.com","password":"ContraDePrueba123/3","confirmPass":"ContraDePrueba123/3","tipoUser":"turista"}]}
+{
+    "users": [
+        {
+            "id": "5",
+            "name": "erick villatoro",
+            "username": "villa01",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/villa01/profile.jpg",
+            "email": "elderpum99@gmail.com",
+            "password": "ContraDePrueba123/3",
+            "confirmPass": "ContraDePrueba123/3",
+            "tipoUser": "turista"
+        },
+        {
+            "id": "1",
+            "name": "elder pum",
+            "username": "epum",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/epum/profile.jpg",
+            "email": "elderpum@gmail.com",
+            "password": "ContraDePrueba123/3",
+            "confirmPass": "ContraDePrueba123/3",
+            "tipoUser": "recepcionista"
+        }
+    ]
+}

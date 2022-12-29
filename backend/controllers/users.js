@@ -25,7 +25,7 @@ const createUser = async (req = request, res = response) => {
 
     // Now we need to get base64 image in order to upload to s3 bucket
     const picture = req.files.profilePhoto
-
+    
     // Check if password and confirmPass aren't same
     if (password != confirmPass) {
         return res.status(400).json({
