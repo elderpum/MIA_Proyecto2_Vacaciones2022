@@ -75,6 +75,21 @@ const createUser = async (req = request, res = response) => {
     }
 }
 
+const confirmUser = async(req = request, res = response) => {
+    // We need the confirmation code and the username
+    const {code, username} = req.body
+
+    try {
+        const result = await cognitoUserPool.confirmUser(username, code)
+        return res.json({result})
+    } catch (error) {
+        return res.status(400).json({
+            err
+        })
+    }
+}
+
 module.exports = {
-    createUser
+    createUser,
+    confirmUser
 }

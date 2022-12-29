@@ -25,8 +25,6 @@ const uploadFile = (filename, fileData) => {
                 console.log(err)
                 reject(err)
             }
-            console.log(s3)
-            console.log(data)
             resolve({ url: data.Location, nombre: name })
         })
     })

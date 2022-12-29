@@ -4,7 +4,8 @@ const { check, param } = require('express-validator');
 
 
 const {
-    createUser
+    createUser,
+    confirmUser
 } = require('../controllers/users');
 
 const validateAtributes= require('../middlewares/validate-attributes');
@@ -27,5 +28,9 @@ router.post('/',[
 ],
 createUser);
 
+router.put('/confirm/', [
+    check('username', 'username is mandatory.').not().isEmpty(),
+    check('code', 'code needs to be at least 6 letters long.').not().isEmpty(),
+], confirmUser)
 
 module.exports = router;
