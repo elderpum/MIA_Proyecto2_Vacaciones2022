@@ -11,6 +11,7 @@ class Server {
         this.paths = {
             users: '/api/users',
             viajes: '/api/viajes',
+            autos: '/api/autos',
             healthcheck: '/healthcheck'
         }
 
@@ -37,6 +38,7 @@ class Server {
         this.app.get(this.paths.healthcheck, (req, res) => res.status(200).json({ok: "ok"}));
         this.app.use(this.paths.users, require('../routes/users'));
         this.app.use(this.paths.viajes, require('../routes/viajes'))
+        this.app.use(this.paths.autos, require('../routes/autos'))
     }
 
     listen() {

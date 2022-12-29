@@ -6,6 +6,7 @@ const path = require('path')
 // Clean users.json
 fs.writeFileSync(path.resolve(__dirname, "../backend/database/users.json"), "{\"users\":[]}", 'utf-8')
 fs.writeFileSync(path.resolve(__dirname, "../backend/database/viajes.json"), "{\"viajes\":[]}", 'utf-8')
+fs.writeFileSync(path.resolve(__dirname, "../backend/database/autos.json"), "{\"autos\":[]}", 'utf-8')
 
 const Server = require('./models/server')
 

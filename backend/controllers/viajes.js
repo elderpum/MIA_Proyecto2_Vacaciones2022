@@ -12,10 +12,6 @@ function getUser(idUsuario) {
 }
 
 const createViaje = async(req = request, res = response) => {
-    // Read users.json
-    const fileUsers = fs.readFileSync(path.resolve(__dirname, "../database/users.json"), 'utf-8')
-    let jsonUsers = JSON.parse(fileUsers)
-
     // Read viajes.json
     const fileViajes = fs.readFileSync(path.resolve(__dirname, "../database/viajes.json"), 'utf-8')
     let jsonViajes = JSON.parse(fileViajes)
