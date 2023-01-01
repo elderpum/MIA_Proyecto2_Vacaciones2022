@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import logo from "./assets/logo.png";
-import "./App.css";
+import "./login.css";
 
-class App extends Component {
+class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +37,7 @@ class App extends Component {
 
         // Here we need to move to another react page
         alert("awelas si se loguea y reconoce el usuario y la contraseña")
+        window.location.href = "http://localhost:3000/Home"
       }) .catch(error => {
         alert("Hubo un error al iniciar sesión. Vuelva a intentarlo")
         console.log(error)
@@ -46,16 +46,10 @@ class App extends Component {
     }
   };
 
-  handleClick = (e) => {
-    e.preventDefault();
-
-    alert("Goes to registration page");
-  };
-
   render() {
     return (
-      <div className="App">
-        <img src={logo} className="logo" alt="Business view - Reports" />
+      <div className="Login">
+        <h2>Login</h2>
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="input-group">
             <label htmlFor="username">Nombre de Usuario</label>
@@ -71,12 +65,9 @@ class App extends Component {
           </div>
           <button className="primary">Login</button>
         </form>
-        <button className="secondary" onClick={this.handleClick}>
-          Crear una Nueva Cuenta
-        </button>
       </div>
     );
   }
 }
 
-export default App;
+export default Login;
