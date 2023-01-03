@@ -6,8 +6,8 @@
             "username": "villa01",
             "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/villa01/profile.jpg",
             "email": "elderpum99@gmail.com",
-            "password": "ContraDePrueba123/3",
-            "confirmPass": "ContraDePrueba123/3",
+            "password": "123",
+            "confirmPass": "123",
             "tipoUser": "turista"
         },
         {
@@ -19,6 +19,46 @@
             "password": "ContraDePrueba123/3",
             "confirmPass": "ContraDePrueba123/3",
             "tipoUser": "recepcionista"
+        },
+        {
+            "id": "ba6e50db-a397-4361-9974-34025cbe1b17",
+            "name": "edwin pum",
+            "username": "winpum",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/winpum/profile.jpg",
+            "email": "elderpum@gmail.com",
+            "password": "ContraPrueba5/",
+            "confirmPass": "ContraPrueba5/",
+            "tipoUser": "turista"
+        },
+        {
+            "id": "c02a90f1-5cdb-4961-8d3c-5748ed62e839",
+            "name": "manuel villacorta",
+            "username": "manucorta",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/manucorta/profile.png",
+            "email": "manucorta@gmail.com",
+            "password": "Prueba456/",
+            "confirmPass": "Prueba456/",
+            "tipoUser": "Turista"
+        },
+        {
+            "id": "ef926ca2-42df-4981-b06f-7ff53c4a6962",
+            "name": "Walter Cotí",
+            "username": "waltercoti",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/waltercoti/profile.jpg",
+            "email": "elderpum@hotmail.com",
+            "password": "Prueba123/",
+            "confirmPass": "Prueba123/",
+            "tipoUser": "Recepcionista"
+        },
+        {
+            "id": "2548d7f9-9d3e-4b81-8792-976d633566cc",
+            "name": "Manolito",
+            "username": "manolitouser",
+            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/manolitouser/profile.jpg",
+            "email": "manolito@gmail.com",
+            "password": "ManolitoPrueba1/",
+            "confirmPass": "ManolitoPrueba1/",
+            "tipoUser": "Recepcionista"
         }
     ]
 }

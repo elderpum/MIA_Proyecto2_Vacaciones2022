@@ -1,8 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Switch,Route} from 'react-router-dom'
 import Login from '../pages/login'
-import Home from '../pages/home'
-import Register from '../pages/register'
+import Menu from '../pages/menu'
 
 function Routes(){
     return(
@@ -12,8 +11,8 @@ function Routes(){
                 <Route exact path='/' component={Login}></Route>
             </Switch>
             <Switch>
-                {/* Ruta para el Home Page */}
-                <Route exact path='/home' component={Home}></Route>
+                {/* Ruta para el Menu Principal */}
+                <Route exact path='/menu' component={Menu}></Route>
             </Switch>
         </BrowserRouter>
     )

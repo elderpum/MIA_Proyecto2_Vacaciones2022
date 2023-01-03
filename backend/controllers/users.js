@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const { response, request } = require('express')
 const {uploadFile} = require('../helpers/awss3')
-
+const { v4: uuidv4 } = require('uuid');
 const { CognitoHandler } = require('../models/Cognito/CognitoHandler');
 
 
@@ -21,7 +21,7 @@ const createUser = async (req = request, res = response) => {
     let jsonUsers = JSON.parse(file)
     
     // Get text params in request body
-    const {id, name, username, email, password, confirmPass, tipoUser} = req.body
+    const {name, username, email, password, confirmPass, tipoUser} = req.body
 
     // Now we need to get base64 image in order to upload to s3 bucket
     const picture = req.files.profilePhoto
@@ -44,7 +44,7 @@ const createUser = async (req = request, res = response) => {
         const {url: urlPerfil, nombre} = await uploadFile(nombreArchivo, picture.data)
         await cognitoUserPool.SignUp(username, password, name, email, urlPerfil)
         var newUser = {
-            id: id,
+            id: uuidv4(),
             name: name,
             username: username,
             profilePhoto: urlPerfil,
