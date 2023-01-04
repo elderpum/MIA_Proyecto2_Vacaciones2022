@@ -15,7 +15,7 @@ function getUser(idUsuario) {
   return (jsonUsers.users.id === idUsuario) !== -1;
 }
 
-const createViaje = async (req = request, res = response) => {
+const createVuelo = async (req = request, res = response) => {
   // Read viajes.json
   const fileVuelos = fs.readFileSync(
     path.resolve(__dirname, "../database/vuelos.json"),

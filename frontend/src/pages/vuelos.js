@@ -6,7 +6,7 @@ const Vuelos = () => {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.get("http://localhost:3200/api/viajes").then(function (response) {
+    axios.get("http://localhost:3200/api/vuelos").then(function (response) {
       console.log(response.data.data);
     });
   };

@@ -39,7 +39,7 @@ class Server {
         this.app.get(this.paths.healthcheck, (req, res) => res.status(200).json({ok: "ok"}));
         this.app.use(this.paths.login, require('../routes/login'))
         this.app.use(this.paths.users, require('../routes/users'))
-        this.app.use(this.paths.viajes, require('../routes/vuelos'))
+        this.app.use(this.paths.vuelos, require('../routes/vuelos'))
         this.app.use(this.paths.autos, require('../routes/autos'))
     }
 

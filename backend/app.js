@@ -10,8 +10,8 @@ fs.writeFileSync(
   "utf-8"
 );
 fs.writeFileSync(
-  path.resolve(__dirname, "../backend/database/viajes.json"),
-  '{"viajes":[]}',
+  path.resolve(__dirname, "../backend/database/vuelos.json"),
+  '{"vuelos":[]}',
   "utf-8"
 );
 fs.writeFileSync(

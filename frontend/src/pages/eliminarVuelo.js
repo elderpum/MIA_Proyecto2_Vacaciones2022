@@ -15,9 +15,9 @@ const EliminarVuelo = () => {
     } else {
 
       await axios
-        .delete("http://localhost:3200/api/viajes", {
+        .delete("http://localhost:3200/api/vuelos", {
           data: {
-            idViaje: idVuelo
+            idVuelo: idVuelo
           },
           headers: {
             "Content-Type": "multipart/form-data",

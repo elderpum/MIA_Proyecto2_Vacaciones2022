@@ -34,7 +34,7 @@ const CrearVuelo = () => {
       formData.append("idUsuario", idUsuario);
       // Obtenemos la ruta de la api correspondiente al login
       await axios.post(
-        "http://localhost:3200/api/viajes",
+        "http://localhost:3200/api/vuelos",
         formData,
         {
           headers: {
