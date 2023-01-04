@@ -49,16 +49,6 @@
             "password": "Prueba123/",
             "confirmPass": "Prueba123/",
             "tipoUser": "Recepcionista"
-        },
-        {
-            "id": "2548d7f9-9d3e-4b81-8792-976d633566cc",
-            "name": "Manolito",
-            "username": "manolitouser",
-            "profilePhoto": "https://appweb-201700761-p2.s3.amazonaws.com/manolitouser/profile.jpg",
-            "email": "manolito@gmail.com",
-            "password": "ManolitoPrueba1/",
-            "confirmPass": "ManolitoPrueba1/",
-            "tipoUser": "Recepcionista"
         }
     ]
 }

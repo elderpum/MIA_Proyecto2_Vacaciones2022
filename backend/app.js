@@ -1,14 +1,26 @@
-require("dotenv").config()
-const fs = require('fs')
-const path = require('path')
+require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
 
 // First we need to clear all data in json files
 // Clean users.json
-fs.writeFileSync(path.resolve(__dirname, "../backend/database/users.json"), "{\"users\":[]}", 'utf-8')
-fs.writeFileSync(path.resolve(__dirname, "../backend/database/viajes.json"), "{\"viajes\":[]}", 'utf-8')
-fs.writeFileSync(path.resolve(__dirname, "../backend/database/autos.json"), "{\"autos\":[]}", 'utf-8')
+fs.writeFileSync(
+  path.resolve(__dirname, "../backend/database/users.json"),
+  '{"users":[]}',
+  "utf-8"
+);
+fs.writeFileSync(
+  path.resolve(__dirname, "../backend/database/viajes.json"),
+  '{"viajes":[]}',
+  "utf-8"
+);
+fs.writeFileSync(
+  path.resolve(__dirname, "../backend/database/autos.json"),
+  '{"autos":[]}',
+  "utf-8"
+);
 
-const Server = require('./models/server')
+const Server = require("./models/server");
 
 const server = new Server();
 
