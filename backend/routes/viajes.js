@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check, param } = require("express-validator");
 
-const { createViaje, validateViaje, deleteViaje } = require("../controllers/viajes");
+const { createViaje, validateViaje, deleteViaje, getViajes } = require("../controllers/viajes");
 
 const validateAtributes = require("../middlewares/validate-attributes");
 
@@ -38,5 +38,7 @@ router.delete(
   ],
   deleteViaje
 );
+
+router.get("/", getViajes);
 
 module.exports = router;

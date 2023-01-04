@@ -158,8 +158,29 @@ const deleteViaje = async (req = request, res = response) => {
   }
 };
 
+const getViajes = async (req = request, res = response) => {
+  const file = fs.readFileSync(
+    path.resolve(__dirname, "../database/viajes.json"),
+    "utf-8"
+  );
+  let jsonViajes = JSON.parse(file);
+
+  try {
+    return res.status(201).json({
+      data: jsonViajes.viajes
+    });
+  } catch (error) {
+    console.error(error.message || JSON.stringify(error));
+    return res.status(401).json({
+      msg: "No hay viajes",
+      err: error.message || JSON.stringify(error),
+    });
+  }
+};
+
 module.exports = {
   createViaje,
   validateViaje,
-  deleteViaje
+  deleteViaje,
+  getViajes
 };
