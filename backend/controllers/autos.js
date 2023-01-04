@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 const { response, request, json } = require("express");
 
 // We need to create a function to get all values from a specific user using only his id
@@ -23,28 +24,21 @@ const createAuto = async (req = request, res = response) => {
   let jsonAutos = JSON.parse(fileAutos);
 
   // Obtain values from form-data
-  const {
-    idAuto,
-    nombreAgencia,
-    marca,
-    modelo,
-    precioAuto,
-    ciudadOrigen,
-    idUsuario,
-  } = req.body;
-  const rentaAprobada = "No";
+  const { nombreAgencia, marca, modelo, precioAuto, ciudadOrigen, idUsuario } =
+    req.body;
+  const rentaAprobada = "Pendiente";
 
   try {
     // Now we need to upload this information into users.json and viajes.json
     var newAuto = {
-      idAuto: idAuto,
+      idAuto: uuidv4(),
       nombreAgencia: nombreAgencia,
       marca: marca,
       modelo: modelo,
       precioAuto: precioAuto,
       ciudadOrigen: ciudadOrigen,
-      rentaAprobada: rentaAprobada,
       idUsuario: idUsuario,
+      rentaAprobada: rentaAprobada,
     };
 
     if (getUser(idUsuario)) {
@@ -65,14 +59,14 @@ const createAuto = async (req = request, res = response) => {
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
     return res.status(401).json({
-      msg: "No se pudo guardar el nuevo viaje.",
+      msg: "No se pudo guardar el nuevo automóvil.",
       err: error.message || JSON.stringify(error),
     });
   }
 };
 
 const validateAuto = async (req = request, res = response) => {
-  const { idAuto, idUsuario } = req.body;
+  const { idAuto, idUsuario, rentaAprobada } = req.body;
   // Read viajes.json
   const fileAutos = fs.readFileSync(
     path.resolve(__dirname, "../database/autos.json"),
@@ -84,14 +78,12 @@ const validateAuto = async (req = request, res = response) => {
   const result = jsonAutos.autos.filter(
     (auto) => auto.idUsuario === idUsuario && auto.idAuto === idAuto
   );
-  console.log(result);
+
   const nombreAgencia = result[0].nombreAgencia;
   const marca = result[0].marca;
   const modelo = result[0].modelo;
   const precioAuto = result[0].precioAuto;
   const ciudadOrigen = result[0].ciudadOrigen;
-  // Here we gonna change the value to Yes in order to aprove the flying
-  const rentaAprobada = "Si";
 
   try {
     var updateAuto = {
@@ -114,19 +106,73 @@ const validateAuto = async (req = request, res = response) => {
       "utf-8"
     );
     return res.status(201).json({
-      msg: "Automóvil aprobado con exito.",
+      msg: "Automóvil aprobado/rechazado con exito.",
       datos: updateAuto,
     });
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
     return res.status(401).json({
-      msg: "No se pudo guardar el nuevo viaje.",
+      msg: "No se pudo modificar el automóvil.",
       err: error.message || JSON.stringify(error),
     });
   }
 };
 
+const deleteAuto = async (req = reques, res = response) => {
+  // Read viajes.json
+  const fileAutos = fs.readFileSync(
+    path.resolve(__dirname, "../database/autos.json"),
+    "utf-8"
+  );
+  let jsonAutos = JSON.parse(fileAutos);
+
+  const { idAuto } = req.body;
+
+  try {
+    const result = jsonAutos.autos.filter((auto) => auto.idAuto === idAuto);
+    jsonAutos.autos.pop(result);
+    const new_json_autos = JSON.stringify(jsonAutos);
+    fs.writeFileSync(
+      path.resolve(__dirname, "../database/autos.json"),
+      new_json_autos,
+      "utf-8"
+    );
+    return res.status(201).json({
+      msg: "Auto eliminado con éxito.",
+      datos: result[0],
+    });
+  } catch (error) {
+    console.error(error.message || JSON.stringify(error));
+    return res.status(401).json({
+      msg: "No se pudo eliminar el auto.",
+      err: error.message || JSON.stringify(error),
+    });
+  }
+};
+
+const getAutos = async(req = request, res = response) => {
+  const fileAutos = fs.readFileSync(
+    path.resolve(__dirname, "../database/autos.json"),
+    "utf-8"
+  );
+  let jsonAutos = JSON.parse(fileAutos);
+
+  try {
+    return res.status(201).json({
+      data: jsonAutos.autos,
+    })
+  } catch (error) {
+    console.error(error.message || JSON.stringify(error));
+    return res.status(401).json({
+      msg: "No hay autos",
+      err: error.message || JSON.stringify(error),
+    });
+  }
+}
+
 module.exports = {
   createAuto,
   validateAuto,
+  deleteAuto,
+  getAutos
 };

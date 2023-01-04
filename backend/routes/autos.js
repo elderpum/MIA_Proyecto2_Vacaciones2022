@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check, param } = require("express-validator");
 
-const { createAuto, validateAuto } = require("../controllers/autos");
+const { createAuto, validateAuto, deleteAuto, getAutos } = require("../controllers/autos");
 
 const validateAtributes = require("../middlewares/validate-attributes");
 
@@ -28,9 +28,21 @@ router.put(
   [
     check("idAuto", "idAuto is mandatory.").not().isEmpty(),
     check("idUsuario", "idUsuario is mandatory.").not().isEmpty(),
+    check("rentaAprobada", "rentaAprobada is mandatory.").not().isEmpty(),
     validateAtributes,
   ],
   validateAuto
 );
+
+router.delete(
+  "/",
+  [
+    check("idAuto", "Se necesita el id del auto asociado").not().isEmpty(),
+    validateAtributes,
+  ],
+  deleteAuto
+);
+
+router.get("/", getAutos);
 
 module.exports = router;

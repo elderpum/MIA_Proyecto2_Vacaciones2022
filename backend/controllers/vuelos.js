@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
-const { response, request} = require("express");
+const { response, request } = require("express");
 
 // We need to create a function to get all values from a specific user using only his id
 function getUser(idUsuario) {
@@ -132,13 +132,14 @@ const deleteVuelo = async (req = request, res = response) => {
   let jsonVuelos = JSON.parse(file);
 
   // We need to delete users, only using his id
-  const {idVuelo} = req.body;
+  const { idVuelo } = req.body;
 
   try {
     // Obtain all user's data
-    const result = jsonVuelos.vuelos.filter((vuelo) => vuelo.idVuelo === idVuelo);
+    const result = jsonVuelos.vuelos.filter(
+      (vuelo) => vuelo.idVuelo === idVuelo
+    );
     // Now we gonna delete this user and rewrite json file
-    jsonVuelos.vuelos.pop(result);
     const new_json_vuelos = JSON.stringify(jsonVuelos);
     fs.writeFileSync(
       path.resolve(__dirname, "../database/vuelos.json"),
@@ -167,7 +168,7 @@ const getVuelos = async (req = request, res = response) => {
 
   try {
     return res.status(201).json({
-      data: jsonVuelos.vuelos
+      data: jsonVuelos.vuelos,
     });
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
@@ -182,5 +183,5 @@ module.exports = {
   createVuelo,
   validateVuelo,
   deleteVuelo,
-  getVuelos
+  getVuelos,
 };
