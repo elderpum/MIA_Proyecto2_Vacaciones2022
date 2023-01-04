@@ -9,8 +9,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const usuarioAdmin = process.env.REACT_APP_USUARIO
-    const passwordAdmin = process.env.REACT_APP_PASSWORD
+    const usuarioAdmin = "admin"
+    const passwordAdmin = "admin"
 
     console.log(usuarioAdmin)
     console.log(passwordAdmin)
@@ -18,7 +18,8 @@ const Login = () => {
     if (!username || !password) {
       alert("Uno de los campos está vacío. Llénelo y vuelva a intentarlo");
     } else if (username === usuarioAdmin && password === passwordAdmin) {
-      alert("Si lo reconoció xd")
+      alert("Usuario administrador reconocido. Bienvenido.")
+      window.location.href = "http://localhost:3000/menu";
     } else {
       const formData = new FormData();
       formData.append("username", username);
