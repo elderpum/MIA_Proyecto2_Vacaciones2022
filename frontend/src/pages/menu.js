@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import './menu.css'
 import Login from "./login";
 import Register from './register'
+import EliminarUsuario from './eliminarUsuario'
 import VerificarUsuario from './verificarUsuario'
 
 function Menu() {
@@ -21,6 +22,9 @@ function Menu() {
         </Switch>
         <Switch>
           <Route exact path='/usuarios/confirmar' component={VerificarUsuario}></Route>
+        </Switch>
+        <Switch>
+          <Route exact path='/usuarios/eliminar' component={EliminarUsuario}></Route>
         </Switch>
       </BrowserRouter>
     </>
