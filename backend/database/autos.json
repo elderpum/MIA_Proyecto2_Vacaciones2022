@@ -1,1 +1,24 @@
-{"autos":[{"idAuto":"bf43d7cf-2081-4dd3-891f-6c24e467b81d","nombreAgencia":"Toyota Miraflores","marca":"Toyota Supra","modelo":"2005","precioAuto":"5000","ciudadOrigen":"Ciudad de Guatemala, Villa Nueva","rentaAprobada":"Pendiente","idUsuario":"ef926ca2-42df-4981-b06f-7ff53c4a6962"},{"idAuto":"116b03c3-f26d-4408-9ec3-e5a8656fc80b","nombreAgencia":"Cofinho Stahl","marca":"Toyota","modelo":"2010","precioAuto":"5000","ciudadOrigen":"Argentina","rentaAprobada":"Pendiente","idUsuario":"ef926ca2-42df-4981-b06f-7ff53c4a6962"}]}
+{
+    "autos": [
+        {
+            "idAuto": "bf43d7cf-2081-4dd3-891f-6c24e467b81d",
+            "nombreAgencia": "Toyota Miraflores",
+            "marca": "Toyota Supra",
+            "modelo": "2005",
+            "precioAuto": "5000",
+            "ciudadOrigen": "Ciudad de Guatemala, Villa Nueva",
+            "rentaAprobada": "Pendiente",
+            "idUsuario": "ef926ca2-42df-4981-b06f-7ff53c4a6962"
+        },
+        {
+            "idAuto": "116b03c3-f26d-4408-9ec3-e5a8656fc80b",
+            "nombreAgencia": "Cofinho Stahl",
+            "marca": "Toyota",
+            "modelo": "2010",
+            "precioAuto": "5000",
+            "ciudadOrigen": "Argentina",
+            "rentaAprobada": "Pendiente",
+            "idUsuario": "ef926ca2-42df-4981-b06f-7ff53c4a6962"
+        }
+    ]
+}
