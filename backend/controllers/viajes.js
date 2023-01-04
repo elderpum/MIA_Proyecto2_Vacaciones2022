@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const { response, request, json } = require("express");
+const { v4: uuidv4 } = require("uuid");
+const { response, request} = require("express");
 
 // We need to create a function to get all values from a specific user using only his id
 function getUser(idUsuario) {
@@ -24,7 +25,6 @@ const createViaje = async (req = request, res = response) => {
 
   // Obtain values from form-data
   const {
-    idViaje,
     nombreAgencia,
     ciudadOrigen,
     ciudadDestino,
@@ -32,12 +32,12 @@ const createViaje = async (req = request, res = response) => {
     precioVuelo,
     idUsuario,
   } = req.body;
-  const vueloAprobado = "No";
+  const vueloAprobado = "Pendiente";
 
   try {
     // Now we need to upload this information into users.json and viajes.json
     var newViaje = {
-      idViaje: idViaje,
+      idViaje: uuidv4(),
       nombreAgencia: nombreAgencia,
       ciudadOrigen: ciudadOrigen,
       ciudadDestino: ciudadDestino,
@@ -72,7 +72,7 @@ const createViaje = async (req = request, res = response) => {
 };
 
 const validateViaje = async (req = request, res = response) => {
-  const { idViaje, idUsuario } = req.body;
+  const { idViaje, idUsuario, vueloAprobado } = req.body;
   // Read viajes.json
   const fileViajes = fs.readFileSync(
     path.resolve(__dirname, "../database/viajes.json"),
@@ -90,8 +90,6 @@ const validateViaje = async (req = request, res = response) => {
   const ciudadDestino = result[0].ciudadDestino;
   const diasVuelo = result[0].diasVuelo;
   const precioVuelo = result[0].precioVuelo;
-  // Here we gonna change the value to Yes in order to aprove the flying
-  const vueloAprobado = "Si";
 
   try {
     var updateViaje = {
@@ -126,7 +124,42 @@ const validateViaje = async (req = request, res = response) => {
   }
 };
 
+const deleteViaje = async (req = request, res = response) => {
+  const file = fs.readFileSync(
+    path.resolve(__dirname, "../database/viajes.json"),
+    "utf-8"
+  );
+  let jsonViajes = JSON.parse(file);
+
+  // We need to delete users, only using his id
+  const {idViaje} = req.body;
+
+  try {
+    // Obtain all user's data
+    const result = jsonViajes.users.filter((user) => user.idViaje === idViaje);
+    // Now we gonna delete this user and rewrite json file
+    jsonViajes.users.pop(result);
+    const new_json_viajes = JSON.stringify(jsonViajes);
+    fs.writeFileSync(
+      path.resolve(__dirname, "../database/viajes.json"),
+      new_json_viajes,
+      "utf-8"
+    );
+    return res.status(201).json({
+      msg: "Vuelo eliminado con éxito.",
+      datos: result[0],
+    });
+  } catch (error) {
+    console.error(error.message || JSON.stringify(error));
+    return res.status(401).json({
+      msg: "No se pudo eliminar el vuelo.",
+      err: error.message || JSON.stringify(error),
+    });
+  }
+};
+
 module.exports = {
   createViaje,
   validateViaje,
+  deleteViaje
 };

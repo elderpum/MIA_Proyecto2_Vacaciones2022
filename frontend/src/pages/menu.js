@@ -5,6 +5,7 @@ import Login from "./login";
 import Register from './register'
 import EliminarUsuario from './eliminarUsuario'
 import VerificarUsuario from './verificarUsuario'
+import Usuarios from './usuarios'
 
 function Menu() {
   return (
@@ -25,6 +26,9 @@ function Menu() {
         </Switch>
         <Switch>
           <Route exact path='/usuarios/eliminar' component={EliminarUsuario}></Route>
+        </Switch>
+        <Switch>
+          <Route exact path='/usuarios' component={Usuarios}></Route>
         </Switch>
       </BrowserRouter>
     </>

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check, param } = require("express-validator");
 
-const { createViaje, validateViaje } = require("../controllers/viajes");
+const { createViaje, validateViaje, deleteViaje } = require("../controllers/viajes");
 
 const validateAtributes = require("../middlewares/validate-attributes");
 
@@ -28,6 +28,15 @@ router.put(
     validateAtributes,
   ],
   validateViaje
+);
+
+router.delete(
+  "/",
+  [
+    check("idViaje", "Se necesita el id del viaje asociado").not().isEmpty(),
+    validateAtributes,
+  ],
+  deleteUser
 );
 
 module.exports = router;
