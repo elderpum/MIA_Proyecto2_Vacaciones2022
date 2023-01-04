@@ -6,6 +6,7 @@ import Register from './register'
 import EliminarUsuario from './eliminarUsuario'
 import VerificarUsuario from './verificarUsuario'
 import Usuarios from './usuarios'
+import CrearVuelo from "./crearVuelo";
 
 function Menu() {
   return (
@@ -29,6 +30,9 @@ function Menu() {
         </Switch>
         <Switch>
           <Route exact path='/usuarios' component={Usuarios}></Route>
+        </Switch>
+        <Switch>
+          <Route exact path='/vuelos/crear' component={CrearVuelo}></Route>
         </Switch>
       </BrowserRouter>
     </>

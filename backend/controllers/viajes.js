@@ -43,8 +43,8 @@ const createViaje = async (req = request, res = response) => {
       ciudadDestino: ciudadDestino,
       diasVuelo: diasVuelo,
       precioVuelo: precioVuelo,
-      vueloAprobado: vueloAprobado,
       idUsuario: idUsuario,
+      vueloAprobado: vueloAprobado,
     };
 
     if (getUser(idUsuario)) {

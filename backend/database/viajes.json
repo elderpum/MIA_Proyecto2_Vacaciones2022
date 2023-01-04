@@ -1,1 +1,1 @@
-{"viajes":[]}
+{"viajes":[{"idViaje":"dfcec1e4-0642-4141-b42c-cb9ade57e7c4","nombreAgencia":"Skyline ","ciudadOrigen":"Moscu","ciudadDestino":"Paris","diasVuelo":"Domingo","precioVuelo":"3000","vueloAprobado":"Pendiente","idUsuario":"ef926ca2-42df-4981-b06f-7ff53c4a6962"},{"idViaje":"3234ebef-78d9-4e7e-a8ae-eea0e21a8e88","nombreAgencia":"Movistar Airline","ciudadOrigen":"Argentina","ciudadDestino":"Guatemala","diasVuelo":"Miércoles","precioVuelo":"1500","vueloAprobado":"Pendiente","idUsuario":"ef926ca2-42df-4981-b06f-7ff53c4a6962"}]}
