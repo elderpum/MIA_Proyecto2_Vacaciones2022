@@ -70,8 +70,8 @@ export const navItems = [
   export const autosDropdown = [
     {
       id: 1,
-      title: "Ver Usuarios",
-      path: "/usuarios",
+      title: "Ver Automoviles",
+      path: "/autos",
       cName: "submenu-item",
     },
     {
