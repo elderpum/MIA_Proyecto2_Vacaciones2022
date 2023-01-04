@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check, param } = require("express-validator");
 
-const { createViaje, validateViaje, deleteViaje, getViajes } = require("../controllers/viajes");
+const { createVuelo, validateVuelo, deleteVuelo, getVuelos } = require("../controllers/vuelos");
 
 const validateAtributes = require("../middlewares/validate-attributes");
 
@@ -17,28 +17,29 @@ router.post(
     check("precioVuelo", "Se necesita el precio del vuelo").notEmpty(),
     validateAtributes,
   ],
-  createViaje
+  createVuelo
 );
 
 router.put(
   "/confirm/",
   [
-    check("idViaje", "idViaje is mandatory.").not().isEmpty(),
+    check("idVuelo", "idViaje is mandatory.").not().isEmpty(),
     check("idUsuario", "idUsuario is mandatory.").not().isEmpty(),
+    check("vueloAprobado", "vueloAprobado is mandatory.").not().isEmpty(),
     validateAtributes,
   ],
-  validateViaje
+  validateVuelo
 );
 
 router.delete(
   "/",
   [
-    check("idViaje", "Se necesita el id del viaje asociado").not().isEmpty(),
+    check("idVuelo", "Se necesita el id del vuelo asociado").not().isEmpty(),
     validateAtributes,
   ],
-  deleteViaje
+  deleteVuelo
 );
 
-router.get("/", getViajes);
+router.get("/", getVuelos);
 
 module.exports = router;

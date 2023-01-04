@@ -17,11 +17,11 @@ function getUser(idUsuario) {
 
 const createViaje = async (req = request, res = response) => {
   // Read viajes.json
-  const fileViajes = fs.readFileSync(
-    path.resolve(__dirname, "../database/viajes.json"),
+  const fileVuelos = fs.readFileSync(
+    path.resolve(__dirname, "../database/vuelos.json"),
     "utf-8"
   );
-  let jsonViajes = JSON.parse(fileViajes);
+  let jsonVuelos = JSON.parse(fileVuelos);
 
   // Obtain values from form-data
   const {
@@ -36,8 +36,8 @@ const createViaje = async (req = request, res = response) => {
 
   try {
     // Now we need to upload this information into users.json and viajes.json
-    var newViaje = {
-      idViaje: uuidv4(),
+    var newVuelo = {
+      idVuelo: uuidv4(),
       nombreAgencia: nombreAgencia,
       ciudadOrigen: ciudadOrigen,
       ciudadDestino: ciudadDestino,
@@ -49,40 +49,40 @@ const createViaje = async (req = request, res = response) => {
 
     if (getUser(idUsuario)) {
       // Now we register the same info in viajes.json
-      jsonViajes.viajes.push(newViaje);
-      const new_json_viajes = JSON.stringify(jsonViajes);
+      jsonVuelos.vuelos.push(newVuelo);
+      const new_json_vuelos = JSON.stringify(jsonVuelos);
       fs.writeFileSync(
-        path.resolve(__dirname, "../database/viajes.json"),
-        new_json_viajes,
+        path.resolve(__dirname, "../database/vuelos.json"),
+        new_json_vuelos,
         "utf-8"
       );
 
       return res.status(201).json({
-        msg: "Viaje creado con exito.",
-        datos: newViaje,
+        msg: "Vuelo creado con exito.",
+        datos: newVuelo,
       });
     }
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
     return res.status(401).json({
-      msg: "No se pudo guardar el nuevo viaje.",
+      msg: "No se pudo guardar el nuevo vuelo.",
       err: error.message || JSON.stringify(error),
     });
   }
 };
 
-const validateViaje = async (req = request, res = response) => {
-  const { idViaje, idUsuario, vueloAprobado } = req.body;
+const validateVuelo = async (req = request, res = response) => {
+  const { idVuelo, idUsuario, vueloAprobado } = req.body;
   // Read viajes.json
-  const fileViajes = fs.readFileSync(
-    path.resolve(__dirname, "../database/viajes.json"),
+  const fileVuelo = fs.readFileSync(
+    path.resolve(__dirname, "../database/vuelos.json"),
     "utf-8"
   );
-  let jsonViajes = JSON.parse(fileViajes);
+  let jsonVuelos = JSON.parse(fileVuelo);
 
   // Now we gonna bring all the data using this filter
-  const result = jsonViajes.viajes.filter(
-    (viaje) => viaje.idUsuario === idUsuario && viaje.idViaje === idViaje
+  const result = jsonVuelos.vuelos.filter(
+    (vuelo) => vuelo.idUsuario === idUsuario && vuelo.idVuelo === idVuelo
   );
   console.log(result);
   const nombreAgencia = result[0].nombreAgencia;
@@ -92,8 +92,8 @@ const validateViaje = async (req = request, res = response) => {
   const precioVuelo = result[0].precioVuelo;
 
   try {
-    var updateViaje = {
-      idViaje: idViaje,
+    var updateVuelo = {
+      idVuelo: idVuelo,
       nombreAgencia: nombreAgencia,
       ciudadOrigen: ciudadOrigen,
       ciudadDestino: ciudadDestino,
@@ -103,46 +103,46 @@ const validateViaje = async (req = request, res = response) => {
       idUsuario: idUsuario,
     };
 
-    jsonViajes.viajes.splice(result, 1);
-    jsonViajes.viajes.push(updateViaje);
-    const new_json_viajes = JSON.stringify(jsonViajes);
+    jsonVuelos.vuelos.splice(result, 1);
+    jsonVuelos.vuelos.push(updateVuelo);
+    const new_json_vuelos = JSON.stringify(jsonVuelos);
     fs.writeFileSync(
-      path.resolve(__dirname, "../database/viajes.json"),
-      new_json_viajes,
+      path.resolve(__dirname, "../database/vuelos.json"),
+      new_json_vuelos,
       "utf-8"
     );
     return res.status(201).json({
-      msg: "Viaje aprobado con exito.",
-      datos: updateViaje,
+      msg: "Vuelo aprobado/rechazado con exito.",
+      datos: updateVuelo,
     });
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
     return res.status(401).json({
-      msg: "No se pudo guardar el nuevo viaje.",
+      msg: "No se pudo guardar el nuevo vuelo.",
       err: error.message || JSON.stringify(error),
     });
   }
 };
 
-const deleteViaje = async (req = request, res = response) => {
+const deleteVuelo = async (req = request, res = response) => {
   const file = fs.readFileSync(
-    path.resolve(__dirname, "../database/viajes.json"),
+    path.resolve(__dirname, "../database/vuelos.json"),
     "utf-8"
   );
-  let jsonViajes = JSON.parse(file);
+  let jsonVuelos = JSON.parse(file);
 
   // We need to delete users, only using his id
-  const {idViaje} = req.body;
+  const {idVuelo} = req.body;
 
   try {
     // Obtain all user's data
-    const result = jsonViajes.viajes.filter((user) => user.idViaje === idViaje);
+    const result = jsonVuelos.vuelos.filter((vuelo) => vuelo.idVuelo === idVuelo);
     // Now we gonna delete this user and rewrite json file
-    jsonViajes.viajes.pop(result);
-    const new_json_viajes = JSON.stringify(jsonViajes);
+    jsonVuelos.vuelos.pop(result);
+    const new_json_vuelos = JSON.stringify(jsonVuelos);
     fs.writeFileSync(
-      path.resolve(__dirname, "../database/viajes.json"),
-      new_json_viajes,
+      path.resolve(__dirname, "../database/vuelos.json"),
+      new_json_vuelos,
       "utf-8"
     );
     return res.status(201).json({
@@ -158,29 +158,29 @@ const deleteViaje = async (req = request, res = response) => {
   }
 };
 
-const getViajes = async (req = request, res = response) => {
+const getVuelos = async (req = request, res = response) => {
   const file = fs.readFileSync(
-    path.resolve(__dirname, "../database/viajes.json"),
+    path.resolve(__dirname, "../database/vuelos.json"),
     "utf-8"
   );
-  let jsonViajes = JSON.parse(file);
+  let jsonVuelos = JSON.parse(file);
 
   try {
     return res.status(201).json({
-      data: jsonViajes.viajes
+      data: jsonVuelos.vuelos
     });
   } catch (error) {
     console.error(error.message || JSON.stringify(error));
     return res.status(401).json({
-      msg: "No hay viajes",
+      msg: "No hay vuelos",
       err: error.message || JSON.stringify(error),
     });
   }
 };
 
 module.exports = {
-  createViaje,
-  validateViaje,
-  deleteViaje,
-  getViajes
+  createVuelo,
+  validateVuelo,
+  deleteVuelo,
+  getVuelos
 };
