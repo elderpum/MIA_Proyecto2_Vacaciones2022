@@ -46,7 +46,7 @@ const VerificarVuelo = () => {
   return (
     <div className="all">
       <div className="App">
-        <h2>Formulario para Eliminar Vuelos</h2>
+        <h2>Formulario para Verificar Vuelos</h2>
         <form className="form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="idUsuario">Id del Vuelo</label>

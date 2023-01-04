@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import './menu.css'
+import "./menu.css";
 import Login from "./login";
-import Usuarios from './usuarios'
-import Register from './register'
-import EliminarUsuario from './eliminarUsuario'
-import VerificarUsuario from './verificarUsuario'
+import Usuarios from "./usuarios";
+import Register from "./register";
+import EliminarUsuario from "./eliminarUsuario";
+import VerificarUsuario from "./verificarUsuario";
 import Vuelos from "./vuelos";
 import CrearVuelo from "./crearVuelo";
 import EliminarVuelo from "./eliminarVuelo";
@@ -13,6 +13,7 @@ import VerificarVuelo from "./verificarVuelo";
 import Autos from "./autos";
 import CrearAuto from "./crearAuto";
 import EliminarAuto from "./eliminarAuto";
+import VerificarAuto from "./verificarAuto";
 
 function Menu() {
   return (
@@ -20,43 +21,66 @@ function Menu() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path='/menu'></Route>
+          <Route exact path="/menu"></Route>
         </Switch>
         <Switch>
-          <Route exact path='/usuarios' component={Usuarios}></Route>
+          <Route exact path="/usuarios" component={Usuarios}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/usuarios/crear' component={Register}></Route>
+          <Route exact path="/usuarios/crear" component={Register}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/usuarios/eliminar' component={EliminarUsuario}></Route>
+          <Route
+            exact
+            path="/usuarios/eliminar"
+            component={EliminarUsuario}
+          ></Route>
         </Switch>
         <Switch>
-          <Route exact path='/usuarios/confirmar' component={VerificarUsuario}></Route>
+          <Route
+            exact
+            path="/usuarios/confirmar"
+            component={VerificarUsuario}
+          ></Route>
         </Switch>
         <Switch>
-          <Route exact path='/vuelos' component={Vuelos}></Route>
+          <Route exact path="/vuelos" component={Vuelos}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/vuelos/crear' component={CrearVuelo}></Route>
+          <Route exact path="/vuelos/crear" component={CrearVuelo}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/vuelos/eliminar' component={EliminarVuelo}></Route>
+          <Route
+            exact
+            path="/vuelos/eliminar"
+            component={EliminarVuelo}
+          ></Route>
         </Switch>
         <Switch>
-          <Route exact path='/vuelos/confirmar' component={VerificarVuelo}></Route>
+          <Route
+            exact
+            path="/vuelos/confirmar"
+            component={VerificarVuelo}
+          ></Route>
         </Switch>
         <Switch>
-          <Route exact path='/autos' component={Autos}></Route>
+          <Route exact path="/autos" component={Autos}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/autos/crear' component={CrearAuto}></Route>
+          <Route exact path="/autos/crear" component={CrearAuto}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/autos/eliminar' component={EliminarAuto}></Route>
+          <Route exact path="/autos/eliminar" component={EliminarAuto}></Route>
         </Switch>
         <Switch>
-          <Route exact path='/' component={Login}></Route>
+          <Route
+            exact
+            path="/autos/confirmar"
+            component={VerificarAuto}
+          ></Route>
+        </Switch>
+        <Switch>
+          <Route exact path="/" component={Login}></Route>
         </Switch>
       </BrowserRouter>
     </>
