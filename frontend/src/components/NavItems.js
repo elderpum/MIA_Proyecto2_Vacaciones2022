@@ -16,18 +16,24 @@ export const navItems = [
   export const usuariosDropdown = [
     {
       id: 1,
+      title: "Ver Usuarios",
+      path: "/usuarios",
+      cName: "submenu-item",
+    },
+    {
+      id: 2,
       title: "Crear Usuarios",
       path: "/usuarios/crear",
       cName: "submenu-item",
     },
     {
-      id: 2,
+      id: 3,
       title: "Eliminar Usuarios",
       path: "/usuarios/eliminar",
       cName: "submenu-item",
     },
     {
-      id: 3,
+      id: 4,
       title: "Confirmar Usuario",
       path: "/usuarios/confirmar",
       cName: "submenu-item",

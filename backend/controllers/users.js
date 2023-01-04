@@ -110,7 +110,7 @@ const deleteUser = async (req = request, res = response) => {
   let jsonUsers = JSON.parse(file);
 
   // We need to delete users, only using his id
-  const {idUsuario} = req.body;
+  const { idUsuario } = req.body;
 
   try {
     // Obtain all user's data
@@ -136,8 +136,29 @@ const deleteUser = async (req = request, res = response) => {
   }
 };
 
+const getUsers = async (req = request, res = response) => {
+  const file = fs.readFileSync(
+    path.resolve(__dirname, "../database/users.json"),
+    "utf-8"
+  );
+  let jsonUsers = JSON.parse(file);
+
+  try {
+    return res.status(201).json({
+      data: jsonUsers.users
+    });
+  } catch (error) {
+    console.error(error.message || JSON.stringify(error));
+    return res.status(401).json({
+      msg: "No hay usuarios",
+      err: error.message || JSON.stringify(error),
+    });
+  }
+};
+
 module.exports = {
   createUser,
   confirmUser,
   deleteUser,
+  getUsers,
 };

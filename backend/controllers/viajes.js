@@ -136,9 +136,9 @@ const deleteViaje = async (req = request, res = response) => {
 
   try {
     // Obtain all user's data
-    const result = jsonViajes.users.filter((user) => user.idViaje === idViaje);
+    const result = jsonViajes.viajes.filter((user) => user.idViaje === idViaje);
     // Now we gonna delete this user and rewrite json file
-    jsonViajes.users.pop(result);
+    jsonViajes.viajes.pop(result);
     const new_json_viajes = JSON.stringify(jsonViajes);
     fs.writeFileSync(
       path.resolve(__dirname, "../database/viajes.json"),
