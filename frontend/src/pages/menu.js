@@ -10,6 +10,7 @@ import Vuelos from "./vuelos";
 import CrearVuelo from "./crearVuelo";
 import EliminarVuelo from "./eliminarVuelo";
 import VerificarVuelo from "./verificarVuelo";
+import CrearAuto from "./crearAuto";
 
 function Menu() {
   return (
@@ -42,6 +43,9 @@ function Menu() {
         </Switch>
         <Switch>
           <Route exact path='/vuelos/confirmar' component={VerificarVuelo}></Route>
+        </Switch>
+        <Switch>
+          <Route exact path='/autos/crear' component={CrearAuto}></Route>
         </Switch>
         <Switch>
           <Route exact path='/' component={Login}></Route>
