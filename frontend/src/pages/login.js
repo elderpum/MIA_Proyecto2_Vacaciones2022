@@ -24,7 +24,7 @@ const Login = () => {
       formData.append("username", username);
       formData.append("password", password);
 
-      const res = await axios
+      await axios
         .post("http://localhost:3200/api/login", formData, {
           headers: {
             "Content-Type": "multipart/form-data",

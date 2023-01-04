@@ -45,7 +45,7 @@ const Register = () => {
       formData.append("tipoUser", tipoUser);
 
       // Obtenemos la ruta de la api correspondiente al login
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:3200/api/users",
         formData,
         {

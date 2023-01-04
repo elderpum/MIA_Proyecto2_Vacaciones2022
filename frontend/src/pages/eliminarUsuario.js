@@ -14,7 +14,7 @@ const EliminarUsuario = () => {
       );
     } else {
 
-      const res = await axios
+      await axios
         .delete("http://localhost:3200/api/users", {
           data: {
             idUsuario: idUsuario

@@ -18,7 +18,7 @@ const VerificarUsuario = () => {
       formData.append("username", username);
       formData.append("code", code);
 
-      const res = await axios
+      await axios
         .put("http://localhost:3200/api/users/confirm", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
