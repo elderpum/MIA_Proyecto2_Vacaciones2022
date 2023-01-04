@@ -12,6 +12,7 @@ import EliminarVuelo from "./eliminarVuelo";
 import VerificarVuelo from "./verificarVuelo";
 import Autos from "./autos";
 import CrearAuto from "./crearAuto";
+import EliminarAuto from "./eliminarAuto";
 
 function Menu() {
   return (
@@ -50,6 +51,9 @@ function Menu() {
         </Switch>
         <Switch>
           <Route exact path='/autos/crear' component={CrearAuto}></Route>
+        </Switch>
+        <Switch>
+          <Route exact path='/autos/eliminar' component={EliminarAuto}></Route>
         </Switch>
         <Switch>
           <Route exact path='/' component={Login}></Route>
