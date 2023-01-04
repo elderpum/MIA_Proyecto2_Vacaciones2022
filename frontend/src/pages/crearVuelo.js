@@ -113,7 +113,7 @@ const CrearVuelo = () => {
               onChange={(e) => setIdUsuario(e.target.value)}
             />
           </div>
-          <button className="primary">Registrar Cuenta</button>
+          <button className="primary">Registrar Vuelo</button>
         </form>
       </div>
     </div>

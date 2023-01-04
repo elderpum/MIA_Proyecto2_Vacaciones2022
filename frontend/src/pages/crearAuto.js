@@ -107,7 +107,7 @@ const CrearAuto = () => {
               onChange={(e) => setIdUsuario(e.target.value)}
             />
           </div>
-          <button className="primary">Registrar Cuenta</button>
+          <button className="primary">Registrar Automóvil</button>
         </form>
       </div>
     </div>
