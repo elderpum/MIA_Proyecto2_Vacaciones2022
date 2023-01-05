@@ -26,7 +26,7 @@ const Login = () => {
       formData.append("password", password);
 
       await axios
-        .post("http://3.94.79.239:3200/api/login", formData, {
+        .post("http://52.203.83.171:3200/api/login", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

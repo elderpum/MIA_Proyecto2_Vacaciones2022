@@ -19,7 +19,7 @@ const VerificarUsuario = () => {
       formData.append("code", code);
 
       await axios
-        .put("http://3.94.79.239:3200/api/users/confirm", formData, {
+        .put("http://52.203.83.171:3200/api/users/confirm", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

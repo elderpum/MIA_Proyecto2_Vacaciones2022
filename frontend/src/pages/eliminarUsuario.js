@@ -15,7 +15,7 @@ const EliminarUsuario = () => {
     } else {
 
       await axios
-        .delete("http://3.94.79.239:3200/api/users", {
+        .delete("http://52.203.83.171:3200/api/users", {
           data: {
             idUsuario: idUsuario
           },

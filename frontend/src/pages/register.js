@@ -46,7 +46,7 @@ const Register = () => {
 
       // Obtenemos la ruta de la api correspondiente al login
       await axios.post(
-        "http://3.94.79.239:3200/api/users",
+        "http://52.203.83.171:3200/api/users",
         formData,
         {
           headers: {
