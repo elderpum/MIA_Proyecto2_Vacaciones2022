@@ -15,7 +15,7 @@ const EliminarVuelo = () => {
     } else {
 
       await axios
-        .delete("http://localhost:3200/api/vuelos", {
+        .delete("http://3.94.79.239:3200/api/vuelos", {
           data: {
             idVuelo: idVuelo
           },

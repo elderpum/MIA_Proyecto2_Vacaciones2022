@@ -21,7 +21,7 @@ const VerificarAuto = () => {
       formData.append("rentaAprobada", rentaAprobada);
 
       await axios
-        .put("http://localhost:3200/api/autos/confirm", formData, {
+        .put("http://3.94.79.239:3200/api/autos/confirm", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

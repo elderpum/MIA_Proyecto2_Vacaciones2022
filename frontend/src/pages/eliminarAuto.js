@@ -15,7 +15,7 @@ const EliminarAuto = () => {
     } else {
 
       await axios
-        .delete("http://localhost:3200/api/autos", {
+        .delete("http://3.94.79.239:3200/api/autos", {
           data: {
             idAuto: idAuto
           },

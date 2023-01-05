@@ -22,7 +22,7 @@ const VerificarVuelo = () => {
     formData.append("vueloAprobado", vueloAprobado)
 
       await axios
-        .put("http://localhost:3200/api/vuelos/confirm", formData, {
+        .put("http://3.94.79.239:3200/api/vuelos/confirm", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
